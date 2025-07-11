@@ -296,6 +296,36 @@ const DirectMortgageLoginMobile = () => {
                     <i className="fas fa-globe text-brand mr-2" aria-hidden="true"></i>
                     <span>brookskelly.com</span>
                   </a>
+                  {/* Brooks Kelly – Social Icons */}
+                  <div className="d-flex mt-2">
+                    <a
+                      href="#"
+                      className="mr-3"
+                      aria-label="Visit Brooks Kelly's LinkedIn profile"
+                    >
+                      <i className="fab fa-linkedin text-minted"></i>
+                    </a>
+                    <a
+                      href="#"
+                      className="mr-3"
+                      aria-label="Visit Brooks Kelly's Twitter profile"
+                    >
+                      <i className="fab fa-twitter text-minted"></i>
+                    </a>
+                    <a
+                      href="#"
+                      className="mr-3"
+                      aria-label="Visit Brooks Kelly's Facebook page"
+                    >
+                      <i className="fab fa-facebook text-minted"></i>
+                    </a>
+                    <a
+                      href="#"
+                      aria-label="Visit Brooks Kelly's Instagram profile"
+                    >
+                      <i className="fab fa-instagram text-minted"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

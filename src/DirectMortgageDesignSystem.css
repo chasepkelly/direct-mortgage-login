@@ -446,6 +446,72 @@ p {
 
   .mortgage-login .left-panel {
     padding-right: var(--space-xl);
+ * Social Media Icon Styling
+ * ------------------------------------------------------------------------- */
+
+/* Container utility (optional) */
+.social-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Anchor / clickable area for each icon */
+.social-icons a,
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1rem;            /* Fa icon size */
+  color: var(--text-secondary);
+  background-color: transparent;
+  border-radius: var(--radius-full);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.social-icons a:hover,
+.social-icons a:focus-visible,
+.social-icon:hover,
+.social-icon:focus-visible {
+  color: var(--deal-closing-green);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+/* Light theme adjustments */
+:root.light-mode .social-icons a,
+:root.light-mode .social-icon {
+  color: var(--text-tertiary);
+}
+
+:root.light-mode .social-icons a:hover,
+:root.light-mode .social-icons a:focus-visible,
+:root.light-mode .social-icon:hover,
+:root.light-mode .social-icon:focus-visible {
+  color: var(--deal-closing-green-dark);
+}
+
+/* Larger icon size on big screens for better visual balance */
+@media (min-width: 992px) {
+  .social-icons a,
+  .social-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 1.125rem;
+  }
+}
+
+/* Maintain adequate touch target on mobile (WCAG) */
+.social-icons a::before,
+.social-icon::before {
+  content: "";
+  position: absolute;
+  inset: -0.25rem; /* expands click area without affecting layout */
+}
+
+/* ------------------------------------------------------------------------- */
   }
 
   .mortgage-login .right-panel {
