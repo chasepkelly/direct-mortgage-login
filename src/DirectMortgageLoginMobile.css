@@ -1,0 +1,560 @@
+/* DirectMortgageLoginMobile.css */
+/* Mobile-first, accessibility-enhanced styling with streamlined UX */
+
+/* Font Awesome Import */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+/* Google Fonts - Poppins for clean, professional look */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* CSS Variables for Theming */
+:root {
+  /* Brand Colors */
+  --deal-closing-green: #00A64F;
+  --minted: #87CFBA;
+  
+  /* Theme Colors - Dark Mode Default */
+  --bg-color: #161616;
+  --text-color: #fff;
+  --card-bg: #222;
+  --input-bg: #333;
+  --border-color: #444;
+  --muted-text: #888;
+  
+  /* Spacing System - Based on 4px grid */
+  --space-xxs: 0.125rem;  /* 2px */
+  --space-xs: 0.25rem;    /* 4px */
+  --space-sm: 0.5rem;     /* 8px */
+  --space-md: 1rem;       /* 16px */
+  --space-lg: 1.5rem;     /* 24px */
+  --space-xl: 2rem;       /* 32px */
+  
+  /* Typography */
+  --font-size-xs: 0.75rem;   /* 12px */
+  --font-size-sm: 0.875rem;  /* 14px */
+  --font-size-md: 1rem;      /* 16px */
+  --font-size-lg: 1.125rem;  /* 18px */
+  --font-size-xl: 1.25rem;   /* 20px */
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-circle: 50%;
+  
+  /* Transitions */
+  --transition-fast: 0.2s;
+  --transition-normal: 0.3s;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.2);
+  
+  /* Z-index layers */
+  --z-index-base: 1;
+  --z-index-above: 10;
+  --z-index-top: 1000;
+}
+
+/* Light Mode Variables */
+@media (prefers-color-scheme: light) {
+  :root.auto-theme {
+    --bg-color: #f5f5f5;
+    --text-color: #333;
+    --card-bg: #fff;
+    --input-bg: #eee;
+    --border-color: #ddd;
+  }
+}
+
+/* Light Mode Class (for manual toggle) */
+:root.light-mode {
+  --bg-color: #f5f5f5;
+  --text-color: #333;
+  --card-bg: #fff;
+  --input-bg: #eee;
+  --border-color: #ddd;
+}
+
+/* Global Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base Styles */
+html {
+  font-size: 16px;
+  height: 100%;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  min-height: 100%;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+/* Accessibility - Focus States */
+:focus-visible {
+  outline: 3px solid var(--deal-closing-green);
+  outline-offset: 2px;
+}
+
+/* Container Layout - Mobile First */
+.mortgage-login {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ------------------------------------------------------------------
+ *  Layout – Always side-by-side (50 % / 50 %) – even on small screens
+ * ------------------------------------------------------------------ */
+.container {
+  display: flex;
+  flex-wrap: wrap;          /* allows stacking if width < 480 px */
+  flex-direction: column;   /* mobile: stack vertically (branding first, login second) */
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-sm);
+}
+
+.left-panel {
+  order: 1;                 /* branding + cards appear first on mobile */
+}
+
+.right-panel {
+  order: 2;                 /* login card appears after branding on mobile */
+}
+
+.left-panel,
+.right-panel {
+  flex: 1 1 50%;            /* grow / shrink / basis */
+  padding: var(--space-sm);
+  min-width: 280px;         /* prevent cards from becoming too narrow */
+  /* make every half stretch full height for proper centering */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Center login card in its column */
+.right-panel {
+  justify-content: center;          /* vertical */
+  align-items: center;              /* horizontal */
+}
+
+/* Remove mobile re-ordering so natural DOM order is preserved */
+
+/* Branding Section - Smaller for Mobile */
+.branding {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.logo {
+  max-width: 120px;
+  height: auto;
+  margin-right: var(--space-sm);
+}
+
+.logo-fallback {
+  font-size: var(--font-size-lg);
+  margin-right: var(--space-sm);
+}
+
+.tagline {
+  color: var(--minted);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.5px;
+}
+
+/* Welcome blurb just below branding */
+.branding .welcome-message {
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+/* Compact Cards for Mobile */
+/* Compact card style */
+.loan-officer,
+.realtor-partner {
+  background-color: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Section Headers - Smaller for Mobile */
+.section-header {
+  font-size: var(--font-size-md);
+  margin-bottom: var(--space-sm);
+  font-weight: 600;
+}
+
+.loan-officer .section-header {
+  color: var(--deal-closing-green);
+}
+
+.realtor-partner .section-header {
+  color: var(--minted);
+}
+
+/* Compact Profile Styles */
+.profile {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  grid-gap: var(--space-sm);
+  align-items: start;
+}
+
+.profile-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-circle);
+  object-fit: cover;
+  border: 2px solid var(--deal-closing-green);
+  grid-row: span 2;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-name {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  margin-bottom: var(--space-xxs);
+}
+
+.profile-title,
+.profile-detail {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-xxs);
+}
+
+/* Contact Links - Optimized for Touch */
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xxs);
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  min-height: 44px;
+  padding: var(--space-xs) 0;
+}
+
+.contact-link i {
+  width: 14px;
+  margin-right: var(--space-xs);
+  font-size: var(--font-size-xs);
+}
+
+.loan-officer .contact-link i {
+  color: var(--minted);
+}
+
+.realtor-partner .contact-link i {
+  color: var(--deal-closing-green);
+}
+
+/* Company Logo - Smaller for Mobile */
+.company-logo {
+  max-width: 80px;
+  height: auto;
+  margin-top: var(--space-xs);
+}
+
+/* Horizontal Social Icons */
+.social-icons {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-xs);
+}
+
+.social-icons a {
+  color: var(--minted);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+/* Divider - Thinner for Mobile */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--minted);
+  margin: var(--space-sm) 0;
+  opacity: 0.3;
+}
+
+/* Login Card - Simplified for Mobile */
+.login-card {
+  background-color: var(--card-bg);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  width: 100%;
+  box-shadow: var(--shadow-md);
+  margin: 0 auto var(--space-md); /* auto-center horizontally & keep a little bottom gap */
+  max-width: 340px;               /* keeps card tidy on very wide screens */
+}
+
+/* Welcome Message - Smaller for Mobile */
+.welcome-message {
+  text-align: center;
+  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+}
+
+/* Login Header */
+.login-header {
+  text-align: center;
+  margin-bottom: var(--space-md);
+}
+
+.login-header h2 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-xs);
+}
+
+.login-header p {
+  color: var(--muted-text);
+  font-size: var(--font-size-sm);
+}
+
+/* Simplified Form Styles */
+.form-group {
+  margin-bottom: var(--space-md);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-size: var(--font-size-sm);
+}
+
+.form-group input {
+  width: 100%;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-size: 16px; /* Prevent zoom on iOS */
+  min-height: 44px;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--deal-closing-green);
+  box-shadow: 0 0 0 2px rgba(0, 166, 79, 0.2);
+}
+
+/* Button Styles - Touch-Friendly */
+.btn {
+  display: block;
+  width: 100%;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  border: none;
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+.btn-primary {
+  background-color: var(--deal-closing-green);
+  color: white;
+}
+
+/* Theme Toggle - Positioned for Mobile */
+.theme-toggle {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: var(--font-size-lg);
+  cursor: pointer;
+  z-index: var(--z-index-above);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Progress Bar */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background-color: var(--deal-closing-green);
+  transition: width var(--transition-normal);
+  z-index: var(--z-index-top);
+}
+
+/* Footer - Compact for Mobile */
+.footer {
+  text-align: center;
+  margin-top: var(--space-md);
+  font-size: var(--font-size-xs);
+  color: var(--muted-text);
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Tablet Breakpoint */
+@media (min-width: 768px) {
+  /* Tablet & up: revert to side-by-side layout */
+  .container {
+    flex-direction: row;
+  }
+
+  .container {
+    padding: var(--space-md);
+  }
+  
+  .profile-photo {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .login-card {
+    padding: var(--space-lg);
+  }
+  
+  .logo {
+    max-width: 150px;
+  }
+  
+  .tagline {
+    font-size: var(--font-size-sm);
+  }
+  
+  .loan-officer,
+  .realtor-partner {
+    padding: var(--space-md);
+  }
+}
+
+/* Desktop Breakpoint */
+@media (min-width: 992px) {
+  .container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: var(--space-lg);
+  }
+  
+  .right-panel {
+    order: 2;
+    flex: 1;
+    padding-left: var(--space-md);
+  }
+  
+  .left-panel {
+    order: 1;
+    flex: 1;
+    padding-right: var(--space-md);
+  }
+  
+  .profile-photo {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .profile {
+    grid-template-columns: 90px 1fr;
+  }
+  
+  .login-card {
+    margin-bottom: 0;
+  }
+  
+  .logo {
+    max-width: 180px;
+  }
+}
+
+/* Large Desktop Breakpoint */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--space-xl);
+  }
+  
+  .profile-photo {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .profile {
+    grid-template-columns: 110px 1fr;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .mortgage-login {
+    background-color: white;
+    color: black;
+  }
+  
+  .theme-toggle, 
+  .social-icons {
+    display: none;
+  }
+  
+  .login-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}
+
+/* High Contrast Mode Support */
+@media (forced-colors: active) {
+  .btn-primary {
+    border: 2px solid transparent;
+  }
+  
+  .profile-photo {
+    border: 2px solid CanvasText;
+  }
+}

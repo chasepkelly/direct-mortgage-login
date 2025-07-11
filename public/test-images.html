@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct Mortgage - Image Test Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #00A64F;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .image-test-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        .image-test {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .image-test h2 {
+            margin-top: 0;
+            color: #00A64F;
+            font-size: 18px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .image-test .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            background-color: #f9f9f9;
+            border: 1px dashed #ccc;
+            margin-bottom: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        .profile-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #00A64F;
+        }
+        .logo {
+            max-width: 200px;
+            max-height: 60px;
+        }
+        .image-path {
+            font-family: monospace;
+            background-color: #f0f0f0;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 14px;
+            word-break: break-all;
+        }
+        .status {
+            margin-top: 10px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .status.success {
+            background-color: #e6f7ee;
+            color: #00A64F;
+        }
+        .status.error {
+            background-color: #ffebee;
+            color: #d32f2f;
+        }
+        .troubleshooting {
+            margin-top: 30px;
+            background-color: #e6f7ee;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .troubleshooting h2 {
+            margin-top: 0;
+            color: #00A64F;
+        }
+        .troubleshooting ul {
+            padding-left: 20px;
+        }
+        .troubleshooting li {
+            margin-bottom: 10px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #00A64F;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1><i class="fas fa-image"></i> Direct Mortgage Image Test Page</h1>
+    
+    <div class="image-test-container">
+        <!-- Brooks Kelly Headshot -->
+        <div class="image-test">
+            <h2>Brooks Kelly Headshot</h2>
+            <div class="image-container">
+                <img src="brooks-kelly.jpg" alt="Brooks Kelly" class="profile-photo" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display: none; color: #d32f2f;"><i class="fas fa-exclamation-triangle"></i> Image not found</div>
+            </div>
+            <div class="image-path">src="brooks-kelly.jpg"</div>
+            <div id="brooks-status" class="status">Checking...</div>
+        </div>
+
+        <!-- Britney Bryson Headshot -->
+        <div class="image-test">
+            <h2>Britney Bryson Headshot</h2>
+            <div class="image-container">
+                <img src="britney-bryson.jpg" alt="Britney Bryson" class="profile-photo" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display: none; color: #d32f2f;"><i class="fas fa-exclamation-triangle"></i> Image not found</div>
+            </div>
+            <div class="image-path">src="britney-bryson.jpg"</div>
+            <div id="britney-status" class="status">Checking...</div>
+        </div>
+
+        <!-- Direct Mortgage Logo -->
+        <div class="image-test">
+            <h2>Direct Mortgage Logo</h2>
+            <div class="image-container">
+                <img src="direct-mortgage-logo.png" alt="Direct Mortgage Logo" class="logo" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display: none; color: #d32f2f;"><i class="fas fa-exclamation-triangle"></i> Image not found</div>
+            </div>
+            <div class="image-path">src="direct-mortgage-logo.png"</div>
+            <div id="dm-logo-status" class="status">Checking...</div>
+        </div>
+
+        <!-- Bryson Real Estate Logo -->
+        <div class="image-test">
+            <h2>Bryson Real Estate Logo</h2>
+            <div class="image-container">
+                <img src="bryson-realestate-logo.jpg" alt="Bryson Real Estate Logo" class="logo" onerror="this.onerror=null; this.src=''; this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display: none; color: #d32f2f;"><i class="fas fa-exclamation-triangle"></i> Image not found</div>
+            </div>
+            <div class="image-path">src="bryson-realestate-logo.jpg"</div>
+            <div id="bryson-logo-status" class="status">Checking...</div>
+        </div>
+    </div>
+
+    <div class="troubleshooting">
+        <h2><i class="fas fa-tools"></i> Troubleshooting</h2>
+        <ul>
+            <li><strong>File names are case-sensitive</strong> - Make sure the file names match exactly (e.g., "Brooks-Kelly.jpg" is not the same as "brooks-kelly.jpg")</li>
+            <li><strong>File extensions matter</strong> - .jpg, .jpeg, .png are different formats</li>
+            <li><strong>File location</strong> - Images must be in the "public" folder, not in "public/images" or any subfolder</li>
+            <li><strong>Hard refresh</strong> - Try a hard refresh (Ctrl+F5 or Cmd+Shift+R) to clear cached images</li>
+            <li><strong>Check file size</strong> - Very large images may take longer to load</li>
+        </ul>
+    </div>
+
+    <a href="/login" class="back-link"><i class="fas fa-arrow-left"></i> Back to Login Page</a>
+
+    <script>
+        // Check if images loaded successfully
+        window.onload = function() {
+            checkImage('brooks-kelly.jpg', 'brooks-status');
+            checkImage('britney-bryson.jpg', 'britney-status');
+            checkImage('direct-mortgage-logo.png', 'dm-logo-status');
+            checkImage('bryson-realestate-logo.jpg', 'bryson-logo-status');
+        };
+
+        function checkImage(src, statusId) {
+            const img = new Image();
+            const statusEl = document.getElementById(statusId);
+            
+            img.onload = function() {
+                statusEl.textContent = '✓ Image loaded successfully';
+                statusEl.className = 'status success';
+            };
+            
+            img.onerror = function() {
+                statusEl.textContent = '✗ Image not found';
+                statusEl.className = 'status error';
+            };
+            
+            img.src = src;
+        }
+    </script>
+</body>
+</html>
